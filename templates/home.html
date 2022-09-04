@@ -1,50 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block main %}
 <h1>Flask Demo App</h1>
+<button><a href="{{ url_for('logout') }}">Logout</a></button>
 
-{% for message in get_flashed_messages() %}
-  <h2>{{ message }}</h2>
-{% endfor %}
+<button><a href="{{ url_for('create_user') }}">Create New User</a></button>
 
-<form action="about" method="post" enctype="multipart/form-data">
-
-  <label for="profile_picture">Profile Picture</label>
-  <input type="file" name="profile_picture" accept=".jpg,.jpeg,.png" value="" required><br>
-
-  <label for="first_name">First Name</label>
-  <input type="text" name="first_name" value="" required><br>
-
-  <label for="last_name">Last Name</label>
-  <input type="text" name="last_name" value="" required><br>
-
-  <label for="age">Age</label>
-  <input type="number" name="age" value="" required><br>
-
-  <label for="phone_number">Phone Number</label>
-  <input type="number" name="phone_number" value="" required><br>
-
-  <label for="email">Email</label>
-  <input type="email" name="email" value="" required><br>
-
-  <label for="street_name">Street Name</label>
-  <input type="text" name="street_name" value="" required><br>
-
-  <label for="city">City</label>
-  <input type="text" name="city" value="" required><br>
-
-  <label for="state">State</label>
-  <input type="text" name="state" value="" required><br>
-
-  <label for="zip_code">Zip Code</label>
-  <input type="number" name="zip_code" value="" required><br>
-
-  <input type="submit" value="Create User">
-</form>
-
-</body>
-</html>
+<h2>Users previously created</h2>
+<table border="1">
+    <tr>
+        <th>Profile Picture</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Created Date</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td><img height="100px" width="100px"
+                 src="{{ url_for('static',filename='profile_pictures/{}'.format(user[6]) ) }}"></td>
+        <td><a href="{{ url_for('get_user', user_id=user[0]) }}">{{ user[1] }}</a></td>
+        <td>{{ user[2] }}</td>
+        <td>{{ user[3] }}</td>
+        <td>{{ user[4] }}</td>
+        <td>{{ user[5]["street_name"] }}</td>
+        <td>{{ user[5]["city"] }}</td>
+        <td>{{ user[5]["state"] }}</td>
+        <td>{{ user[5]["zip_code"] }}</td>
+        <td>{{ user[7] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
