@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "crypto-arcade-361520",
+  "private_key_id": "afa8796cac9d92726892592ad7c8991f26a9947a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCp5XDFYN+5e5Bk\nAuE/1KQbYuGdZiVuizetk6klpwxF9+GECBR5TkenY7cByFwf0i8LT5A9E8ium3GE\ngkLSSdBPnQVmM6px7fqb6XvKbQTsrSba5wtuqozYtlCCWiylNtE6DHtgNPDDVhDx\n0WCRjGKfQPy3do+Y22DvUv7ZnCaLZqzDT1dT/9yEPdfDfa86Wi1wAowhZ0pMmkdk\n1KLZrD8MEJKbzfRAld6ksq7T7ax0Z08mKRnmazbt5+4wVx3zUcuXMJZLUzKZTqEq\nei+yo1XG02Jvpc210oAsEy0F6ECJyoOxfuZohxKrdwL91Ot29dP1Qn259O5LzsKX\nJMf2lD5fAgMBAAECggEAIcn59adgl1kVzG4uMi2uPawaxt0L0MJrXmAhodVpQXkd\nJs8ck0uYQJg6S2Z3u/RnWs6GFz+aB+/uUbY+Z+g6P7sw2bSoz2PPFbcH4ahw9Ekz\nkxGkWmwc+vS3alVYz7rpPaxB1U5yG8dAM3e6xveunZGlMS+pO3NWAgL1oH3HxK1h\n9kF/lxTqNHbYElD+F2Z0ABf7rutFeOX9fta7gXyA4MtbyPTv8liT1qQ29zLDm9rt\nJe0cFkuC5PnUwXLcqn0XZd6v2qdpbBSssQSJ7ce737hx0UY40eYzhF6at8ApB7PN\n4TPgKtwVyqgmmD+k8PsjY2n143YqaO638z4zZ4plUQKBgQDRJTxZxNzva49d7/+A\nZ9cQTMRPJYvHDVSGd3rbZak+B309hiwvqhgnRNGBTuxqSxwhnkcqg5Qss+wBjYuV\nG1T6yGeKulpbKKmBjiMLou7hA5JHvfQUaNTNO2XUP3CN8hDNmsuZ3n4egcUIi6SR\nNBVosFevshaiWrie5nhMHwhEJQKBgQDP9TZExAoJE8o81n8oLQvTl1xVH9w2SmZZ\nj2xaSNc8n01cJifHqnmqqZxTC5cGPojetu/rT/4aIEeMGF+L4ZO9Jd8ghDhHwcKb\n55SPIzIB/eVZ01unx1WBZP0HQiYiE8ztpxr56js4xhPYGxikacOePwmnn9lPdJ6M\nTGxm/QaPMwKBgQDMY/ZhyFkeBeC7LeNlapWr0Un8CzZZ1jYnnzZKmURXYVxMtwYR\nosot/jw8gZPboQGh/RuRebtiIIdhUSH7GxXma9l8ovfQpKFbAjxPj/ChqCrZv9J7\n66Mj2ot+bG0j20/+juuwuNZKHAohes7eNKdDgyp+gq1KBxzr9VHVGnKqnQKBgBje\n/NSQlZqsUT2hcae+a3Gs4pATtWSQ1VjUvGK333YSn0/sCEnq644rptSPyEoo5Hmu\na1c7Q+qf/a6Vo6e5HNA8XUkoRwrd84Zt1eigjvSKBwoNKyMPxfwptdFOaf0dXR73\nI1TMXLTXi7wG0ZWoSIr+gwsXJQhJrESfRz+x9zzdAoGAT8i9ZpfaIpB9lTIhh+Em\nzu/59aGmWWEFfI9DN5s2SmlGNV251ixvttQvet7u1PrAHHU7LVo9Y7+telsNQKqF\npQ5kEaRwRvPtealYY2AVFt08tB+EINuYNFwOBcLm4nAH5mJREFfkob6htJJZM8yR\nDZWAvnk+1pXxsUO8G9hR5aE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "crypto-arcade-361520@appspot.gserviceaccount.com",
+  "client_id": "117555519907061757059",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/crypto-arcade-361520%40appspot.gserviceaccount.com"
+}

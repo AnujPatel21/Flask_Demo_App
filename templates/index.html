@@ -3,36 +3,37 @@
 {% block title %}Flask Demo App{% endblock %}
 
 {% block main %}
-<div><h1>This is a demo Flask app</h1></div>
-<div><h2>This app is using Oauth to perform Single Sign On using Gmail and Github.
-    The app is using Postgres DB to store and retrieve user information</h2></div>
-<br>
-<br>
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class=flashes>
-    {% for message in messages %}
-    <li style="color: red;">{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
-To sign up: <button><a href="{{ url_for('create_user') }}">Sign Up</a></button>
+    <div><h1>This is a demo Flask app</h1></div>
+    <div><h2>This app is using Oauth to perform Single Sign On using Gmail and Github.
+        The app is using Postgres DB to store and retrieve user information</h2></div>
+    <br>
+    <br>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li style="color: red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    To signup:
+    <button><a href="{{ url_for('create_user') }}">Sign Up</a></button>
 
-<p><h3>Please use Gmail or Github login to access the application</h3></p>
+    <p><h3>Please use Gmail or Github login to access the application</h3></p>
 
-<div class="oauth-box">
-    <div id="oauth-google">
-        <a href="{{ url_for('google_login') }}">
-            <img src="{{ url_for('static', filename='/images/google-logo.png') }}"
-                 width="55px" height="55px" alt="Google logo">
-        </a>
+    <div class="oauth-box">
+        <div id="oauth-google">
+            <a href="{{ url_for('google_login') }}">
+                <img src="{{ url_for('static', filename='/images/google-logo.png') }}"
+                     width="55px" height="55px" alt="Google logo">
+            </a>
+        </div>
+        <div>
+            <a href="{{ url_for('github_login') }}">
+                <img src="{{ url_for('static', filename='/images/github-logo.png') }}"
+                     width="41px" height="42px" alt="Github logo">
+            </a>
+        </div>
     </div>
-    <div>
-        <a href="{{ url_for('github_login') }}">
-            <img src="{{ url_for('static', filename='/images/github-logo.png') }}"
-                 width="41px" height="42px" alt="Github logo">
-        </a>
-    </div>
-</div>
 {% endblock %}}

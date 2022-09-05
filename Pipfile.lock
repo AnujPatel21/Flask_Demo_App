@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6855255d29ed33328e3848c09106f5cc63a50764cdac2d0a3d83712f4690a238"
+            "sha256": "37ea044e8225f31f891da495c41aed8e80827f04f85b0ebdb7f4121611fd9338"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "index": "pypi",
             "version": "==1.0.1"
+        },
+        "beautifulsoup4": {
+            "hashes": [
+                "sha256:58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30",
+                "sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==4.11.1"
         },
         "cachetools": {
             "hashes": [
@@ -168,6 +176,14 @@
             ],
             "index": "pypi",
             "version": "==2.2.2"
+        },
+        "google": {
+            "hashes": [
+                "sha256:143530122ee5130509ad5e989f0512f7cb218b2d4eddbafbad40fd10e8d8ccbe",
+                "sha256:889cf695f84e4ae2c55fbc0cfdaf4c1e729417fa52ab1db0485202ba173e4935"
+            ],
+            "index": "pypi",
+            "version": "==3.0.0"
         },
         "google-api-core": {
             "hashes": [
@@ -396,6 +412,14 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.16.0"
+        },
+        "soupsieve": {
+            "hashes": [
+                "sha256:3b2503d3c7084a42b1ebd08116e5f81aadfaea95863628c80a3b774a11b7c759",
+                "sha256:fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==2.3.2.post1"
         },
         "uritemplate": {
             "hashes": [

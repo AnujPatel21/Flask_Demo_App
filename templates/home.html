@@ -3,39 +3,39 @@
 {% block title %}Home Page{% endblock %}
 
 {% block main %}
-<h1>Flask Demo App</h1>
-<button><a href="{{ url_for('logout') }}">Logout</a></button>
+    <h1>Flask Demo App</h1>
+    <button><a href="{{ url_for('logout') }}">Logout</a></button>
 
-<button><a href="{{ url_for('create_user') }}">Create New User</a></button>
+    <button><a href="{{ url_for('create_user') }}">Create New User</a></button>
 
-<h2>Users previously created</h2>
-<table border="1">
-    <tr>
-        <th>Profile Picture</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Street Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
-        <th>Created Date</th>
-    </tr>
-    {% for user in users %}
-    <tr>
-        <td><img height="100px" width="100px"
-                 src="{{ url_for('static',filename='profile_pictures/{}'.format(user[6]) ) }}"></td>
-        <td><a href="{{ url_for('get_user', user_id=user[0]) }}">{{ user[1] }}</a></td>
-        <td>{{ user[2] }}</td>
-        <td>{{ user[3] }}</td>
-        <td>{{ user[4] }}</td>
-        <td>{{ user[5]["street_name"] }}</td>
-        <td>{{ user[5]["city"] }}</td>
-        <td>{{ user[5]["state"] }}</td>
-        <td>{{ user[5]["zip_code"] }}</td>
-        <td>{{ user[7] }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>Users previously created</h2>
+    <table border="1">
+        <tr>
+            <th>Profile Picture</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Created Date</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td><img height="100px" width="100px"
+                         src={{ bucket_path }}{{ user[6] }}></td>
+                <td><a href="{{ url_for('get_user', user_id=user[0]) }}">{{ user[1] }}</a></td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+                <td>{{ user[4] }}</td>
+                <td>{{ user[5]["street_name"] }}</td>
+                <td>{{ user[5]["city"] }}</td>
+                <td>{{ user[5]["state"] }}</td>
+                <td>{{ user[5]["zip_code"] }}</td>
+                <td>{{ user[7] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

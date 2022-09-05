@@ -2,43 +2,43 @@
 
 {% block title %}User Details{% endblock %}
 {% block main %}
-<h1>
-    User Details for: {{ user[1] }} {{ user[2] }}
-</h1>
-<img height="100px" width="100px" src="{{ url_for('static',filename='profile_pictures/{}'.format(user[6]) ) }}">
+    <h1>
+        User Details for: {{ user[1] }} {{ user[2] }}
+    </h1>
+    <img height="100px" width="100px" src={{ bucket_path }}{{ user[6] }}>
 
-<table border="1">
-    <tr>
-        <th>First Name</th>
-        <td>{{ user[1] }}</td>
-    </tr>
-    <tr>
-        <th>Last Name</th>
-        <td>{{ user[1] }}</td>
-    </tr>
-    <tr>
-        <th>Age</th>
-        <td>{{ user[3] }}</td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td>{{ user[4] }}</td>
-    </tr>
-    <tr>
-        <th>Street Name</th>
-        <td>{{ user[5]["street_name"] }}</td>
-    </tr>
-    <tr>
-        <th>City</th>
-        <td>{{ user[5]["city"] }}</td>
-    </tr>
-    <tr>
-        <th>State</th>
-        <td>{{ user[5]["state"] }}</td>
-    </tr>
-    <tr>
-        <th>Zip Code</th>
-        <td>{{ user[5]["zip_code"] }}</td>
-    </tr>
-</table>
+    <table border="1">
+        <tr>
+            <th>First Name</th>
+            <td>{{ user[1] }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ user[1] }}</td>
+        </tr>
+        <tr>
+            <th>Age</th>
+            <td>{{ user[3] }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ user[4] }}</td>
+        </tr>
+        <tr>
+            <th>Street Name</th>
+            <td>{{ user[5]["street_name"] }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ user[5]["city"] }}</td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td>{{ user[5]["state"] }}</td>
+        </tr>
+        <tr>
+            <th>Zip Code</th>
+            <td>{{ user[5]["zip_code"] }}</td>
+        </tr>
+    </table>
 {% endblock %}

@@ -1,22 +1,26 @@
 import json
-import os.path
 import psycopg2
-import conf
+import config
 
 from functools import cache
 from flask import Flask, render_template, request, redirect, url_for, abort, session, flash
 from werkzeug.utils import secure_filename
 from authlib.integrations.flask_client import OAuth
+from google.cloud import storage
 
 app = Flask(__name__, static_folder="static")
-app.config['SECRET_KEY'] = conf.SECRET_KEY or os.urandom(24)
+app.config['SECRET_KEY'] = config.SECRET_KEY
 
 oauth = OAuth(app, cache=cache)
 
+storage_client = storage.Client.from_service_account_json(config.GOOGLE_BUCKET_JSON)
+bucket = storage_client.get_bucket(config.GOOGLE_BUCKET_NAME)
+bucket_path = config.GOOGLE_BUCKET_PATH
+
 google = oauth.register(
     name='google',
-    client_id=conf.GOOGLE_CLIENT_ID,
-    client_secret=conf.GOOGLE_CLIENT_SECRET,
+    client_id=config.GOOGLE_CLIENT_ID,
+    client_secret=config.GOOGLE_CLIENT_SECRET,
     access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     authorize_url='https://accounts.google.com/o/oauth2/auth',
@@ -24,13 +28,13 @@ google = oauth.register(
     api_base_url='https://www.googleapis.com/oauth2/v1/',
     userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',
     client_kwargs={'scope': 'openid email profile'},
-    server_metadata_url=conf.GOOGLE_DISCOVERY_URL,
+    server_metadata_url=config.GOOGLE_DISCOVERY_URL,
 )
 
 github = oauth.register(
     name='github',
-    client_id=conf.GITHUB_CLIENT_ID,
-    client_secret=conf.GITHUB_CLIENT_SECRET,
+    client_id=config.GITHUB_CLIENT_ID,
+    client_secret=config.GITHUB_CLIENT_SECRET,
     access_token_url='https://github.com/login/oauth/access_token',
     access_token_params=None,
     authorize_url='https://github.com/login/oauth/authorize',
@@ -41,10 +45,10 @@ github = oauth.register(
 
 
 def get_db_connection():
-    conn = psycopg2.connect(host='localhost',
-                            database='flasksql',
-                            user=conf.DB_USER,
-                            password=conf.DB_PASSWORD)
+    conn = psycopg2.connect(host='35.185.116.190',
+                            database='postgres',
+                            user=config.DB_USER,
+                            password=config.DB_PASSWORD)
     return conn
 
 
@@ -122,16 +126,23 @@ def home():
     users = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('home.html', users=users)
+    return render_template('home.html', users=users, bucket_path=bucket_path)
 
 
 # create user route
 @app.route('/create_user', methods=['GET', 'POST'])
 def create_user():
     if request.method == 'POST':
-        profile_picture = request.files['profile_picture']
-        file_name = request.form['first_name'] + secure_filename(profile_picture.filename)
-        profile_picture.save('C:/Users/Anuj Patel/PycharmProjects/flask-demo-app/static/profile_pictures/' + file_name)
+        file_name = ''
+
+        if request.files:
+            profile_picture = request.files['profile_picture']
+
+            if profile_picture.filename != "":
+                file_name = "%s/%s_%s" % (
+                    'profile_pictures', request.form['first_name'], secure_filename(profile_picture.filename))
+                blob = bucket.blob(file_name)
+                blob.upload_from_file(profile_picture)
 
         first_name = request.form['first_name']
         last_name = request.form['last_name']
@@ -168,7 +179,7 @@ def get_user(user_id):
     cur.close()
     conn.close()
     if user is not None:
-        return render_template('user_detail.html', user=user)
+        return render_template('user_detail.html', user=user, bucket_path=bucket_path)
     return abort(404)
 
 
@@ -176,3 +187,7 @@ def get_user(user_id):
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html'), 404
+
+
+if __name__ == "__main__":
+    app.run(port=5000)

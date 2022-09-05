@@ -1,11 +1,12 @@
-import os
+import config
 import psycopg2
+import ipaddress
 
 conn = psycopg2.connect(
-    host="localhost",
-    database="flasksql",
-    user="anuj",
-    password="master")
+    host=ipaddress.ip_address('35.185.116.190'),
+    database='postgres',
+    user=config.DB_USER,
+    password=config.DB_PASSWORD)
 
 # Open a cursor to perform database operations
 cur = conn.cursor()
@@ -31,7 +32,7 @@ cur.execute('INSERT INTO person (first_name, last_name, age, email, address, pro
              25,
              'anujmpatel21@gmail.com',
              '{"street_name":"Test Street Name 1", "city":"Test city 1", "state":"Test 1", "zip_code":11111}',
-            'sampleprofilepicture1.jpg')
+             'sampleprofilepicture1.jpg')
             )
 
 cur.execute('INSERT INTO person (first_name, last_name, age, email, address, profile_picture)'
@@ -41,7 +42,7 @@ cur.execute('INSERT INTO person (first_name, last_name, age, email, address, pro
              25,
              'vama.trivedi1994@gmail.com',
              '{"street_name":"Test Street Name 2", "city":"Test city 2", "state":"Test 2", "zip_code":22222}',
-            'sampleprofilepicture2.jpg')
+             'sampleprofilepicture2.jpg')
             )
 
 cur.execute('INSERT INTO person (first_name, last_name, age, email, address, profile_picture)'
@@ -51,7 +52,7 @@ cur.execute('INSERT INTO person (first_name, last_name, age, email, address, pro
              25,
              'anujmpatel@icloud.com',
              '{"street_name":"Test Street Name 3", "city":"Test city 3", "state":"Test 3", "zip_code":33333}',
-            'sampleprofilepicture1.jpg')
+             'sampleprofilepicture1.jpg')
             )
 
 conn.commit()
