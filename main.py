@@ -140,11 +140,11 @@ def create_user():
 
             if profile_picture.filename != "":
                 file_name = "%s/%s_%s" % (
-                    'profile_pictures', request.form['first_name'], secure_filename(profile_picture.filename))
+                    'profile_pictures', request.form['first_name'].strip(), secure_filename(profile_picture.filename))
                 blob = bucket.blob(file_name)
                 blob.upload_from_file(profile_picture)
 
-        first_name = request.form['first_name']
+        first_name = request.form['first_name'].strip()
         last_name = request.form['last_name']
         age = request.form['age']
         email = request.form['email']
